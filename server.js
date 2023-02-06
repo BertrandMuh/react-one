@@ -1,5 +1,8 @@
 const express = require('express')
 
+require('dotenv').config()
+console.log(process.env.API_KEY);
+
 const app = express()
 
 app.get('/', (req, res) => {
