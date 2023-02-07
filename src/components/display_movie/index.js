@@ -1,10 +1,10 @@
 import React from 'react'
-import Rating from '../rating';
+// import Rating from '../rating';
 
 
 function Movie(props) {
     let { searchedMovie, movieArray, setMovieArray } = props;
-    console.log(searchedMovie, "FROM DISPLAY_MOVIE");
+    // console.log(searchedMovie, "FROM DISPLAY_MOVIE");
 
     const returnMovieJSX = () => {
         if (searchedMovie !== null) {
