@@ -1,24 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { useState, useEffect } from 'react';
 import './index.css'
 import axios from 'axios'
 
 const Search = (props) => {
-    // properties passed from parent
+    // properties passed from parent (App.js)
     let { setSearchedMovie } = props;
-    let user = props.user;
+    // let user = props.user;
     let { logString } = props;
 
-    // passing argument inside the function
+    // passing argument inside the function that came in the props from App.js
     logString("This string is from Search Child Component!")
-    console.log(user);
+
 
     const [searchString, setSearchString] = useState('');
 
     // listen for submit and make call to server
 
     const handleChange = (e) => {
-        console.dir(e.target.value); // What the element value WOULD BE after the change
         let newValue = e.target.value;
         // was t
         // e.target.value is th
@@ -26,11 +26,12 @@ const Search = (props) => {
     }
 
     const makeServerCall = async (string) => {
+        // Sending request to the server
         let serverResponse = await axios({
             method: 'GET',
-            url: `http://localhost:5000/get_movie/${string}`
+            url: `/get_movie/${string}`
         });
-        console.log(serverResponse);
+        // console.log(serverResponse);
         setSearchString('');
         setSearchedMovie(serverResponse.data)
     }
@@ -40,7 +41,7 @@ const Search = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("submitting!");
+        // console.log("submitting!");
         // if we don't prevent the default, the page will refresh
         // call express server with the string
         makeServerCall(searchString)
